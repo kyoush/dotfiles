@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -11,25 +18,32 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
 
 (setq inhibit-startup-screen t)
 
-;;¥Õ¥©¥ó¥È¤òRicty¤Ë¤¹¤ë
-(add-to-list 'default-frame-alist '(font . "Ricty-11"))
-;;Takao¥´¥·¥Ã¥¯¤Ë¤¹¤ë
-;;(add-to-list 'default-frame-alist '(font . "TakaoGothic"))
-;;TakaoÌÀÄ«¤Ë¤¹¤ë
-;;(add-to-list 'default-frame-alist '(font . "TakaoMincho"))
-;;IPA¥´¥·¥Ã¥¯¤Ë¤¹¤ë
-;;(add-to-list 'default-frame-alist '(font . "IPA¥´¥·¥Ã¥¯"))
-;;IPAÌÀÄ«¤Ë¤¹¤ë
-;;(add-to-list 'default-frame-alist '(font . "IPAÌÀÄ«"))
-;;¥Ò¥é¥®¥Î¤Ë¤¹¤ë
-;;(set-face-attribute 'default nil :family "NoteSansCJK-Thin")
+;;ãƒ•ãƒ¬ãƒ¼ãƒ ã‚µã‚¤ã‚ºæŒ‡å®š
+(setq default-frame-alist
+	  '(
+		(width . 80)
+		(height . 31)
+		))
 
-;;´Ä¶­¤òÆüËÜ¸ì, UTF-8¤Ë¤¹¤ë
-(require 'mozc)
+;;ãƒ•ã‚©ãƒ³ãƒˆã‚’Rictyã«ã™ã‚‹
+(add-to-list 'default-frame-alist '(font . "Ricty-13"))
+;;Takaoã‚´ã‚·ãƒƒã‚¯ã«ã™ã‚‹
+;;(add-to-list 'default-frame-alist '(font . "TakaoGothic"))
+;;Takaoæ˜æœã«ã™ã‚‹
+;;(add-to-list 'default-frame-alist '(font . "TakaoMincho"))
+;;IPAã‚´ã‚·ãƒƒã‚¯ã«ã™ã‚‹
+;;(add-to-list 'default-frame-alist '(font . "IPAexã‚´ã‚·ãƒƒã‚¯"))
+;;IPAæ˜æœã«ã™ã‚‹
+;;(add-to-list 'default-frame-alist '(font . "IPAexæ˜æœ"))
+;;ãƒ’ãƒ©ã‚®ãƒã«ã™ã‚‹
+;;(set-face-attribute 'default nil :family "NoteSansCJK-Thin")
+;;(add-to-list 'default-frame-alist '(font . "æºã®è§’æ˜æœ JP"))
+
+;;ç’°å¢ƒã‚’æ—¥æœ¬èª, UTF-8ã«ã™ã‚‹
 (set-locale-environment nil)
 (set-language-environment"Japanese")
 (set-terminal-coding-system 'utf-8)
@@ -38,42 +52,44 @@
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
+(require 'mozc)
 (setq default-input-method "japanese-mozc");
+(setq mozc-candidate-style 'overlay)
 
-;;¥Ğ¥Ã¥¯¥¢¥Ã¥×¥Õ¥¡¥¤¥ë¤òºîÀ®¤µ¤»¤Ê¤¤
+;;ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã•ã›ãªã„
 (setq make-backup-files nil)
 (setq auto-save-list-file-prefix nil)
 
-;;½ªÎ»»ş¤Ë¥ª¡¼¥È¥»¡¼¥Ö¥Õ¥¡¥¤¥ë¤òºï½ü¤¹¤ë
+;;çµ‚äº†æ™‚ã«ã‚ªãƒ¼ãƒˆã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹
 (setq delete-auto-save-files t)
 
-;;¥¿¥Ö¤Ë¥¹¥Ú¡¼¥¹¤ò»ÈÍÑ¤¹¤ë
+;;ã‚¿ãƒ–ã«ã‚¹ãƒšãƒ¼ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹
 (setq-default tab-width 4 indent-tabs-mode t)
 
-;;Îó¿ô¤òÉ½¼¨¤¹¤ë
+;;åˆ—æ•°ã‚’è¡¨ç¤ºã™ã‚‹
 (column-number-mode t)
 
-;;¹Ô¿ô¤òÉ½¼¨¤¹¤ë
+;;è¡Œæ•°ã‚’è¡¨ç¤ºã™ã‚‹
 (global-linum-mode t)
 
-;;¥«¡¼¥½¥ë¤ÎÅÀÌÇ¤ò¤ä¤á¤ë
+;;ã‚«ãƒ¼ã‚½ãƒ«ã®ç‚¹æ»…ã‚’ã‚„ã‚ã‚‹
 (blink-cursor-mode 0)
 
-;;¥«¡¼¥½¥ë¹Ô¤ò¥Ï¥¤¥é¥¤¥È¤¹¤ë
+;;ã‚«ãƒ¼ã‚½ãƒ«è¡Œã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆã™ã‚‹
 ;;(global-hl-line-mode t)
 
-;;ÂĞ±ş¤¹¤ë¥«¥Ã¥³¤ò¸÷¤é¤»¤ë
+;;å¯¾å¿œã™ã‚‹ã‚«ãƒƒã‚³ã‚’å…‰ã‚‰ã›ã‚‹
 (show-paren-mode 1)
 
-;;¥¦¥£¥ó¥É¥¦Æâ¤Ë¼ı¤Ş¤é¤Ê¤¤¤È¤­¤À¤±¡¢¥«¥Ã¥³Æâ¤â¸÷¤é¤»¤ë
-(setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "grey")
-(set-face-foreground 'show-paren-match-face "black")
+;;ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å†…ã«åã¾ã‚‰ãªã„ã¨ãã ã‘ã€ã‚«ãƒƒã‚³å†…ã‚‚å…‰ã‚‰ã›ã‚‹
+;;(setq show-paren-style 'mixed)
+;;(set-face-background 'show-paren-match-face "grey")a
+;;(set-face-foreground 'show-paren-match-face "black")
 
-;;¥¹¥Ú¡¼¥¹¡¢¥¿¥Ö¤Ê¤É¤ò²Ä»ë²½¤¹¤ë
+;;ã‚¹ãƒšãƒ¼ã‚¹ã€ã‚¿ãƒ–ãªã©ã‚’å¯è¦–åŒ–ã™ã‚‹
 ;;(global-whitespace-mode 1)
 
-;;È¾³Ñ/Á´³Ñ¥­¡¼¤ÇÆşÎÏÀÚ¤êÂØ¤¨¤Ç¤­¤ë¤è¤¦¤Ë¤¹¤ë
+;;C-å¤‰æ›ã‚­ãƒ¼ã§å…¥åŠ›åˆ‡ã‚Šæ›¿ãˆã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
 (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
 
 ;; shut up, emacs!
@@ -82,20 +98,41 @@
 ;;(setq inhibit-startup-echo-area-message "USERNAME")
 ;;(setq inhibit-startup-message t)
 
-;;C-c C-d¤Ç¹Ô¤ÎÊ£À½
+;;C-c C-dã§è¡Œã®è¤‡è£½
 ;;(global-set-key "\C-h\C-s" "\C-a\C- \C-n\M-w\C-y")
 (global-set-key "\C-h\C-s" "\C-a\C-k\C-k\C-y\C-y")
 (put 'upcase-region 'disabled nil)
 
-;;python¥¤¥ó¥Ç¥ó¥È¤Î¥¨¥é¡¼¤¬¤Ç¤Ê¤¤¤è¤¦¤Ë¤¹¤ë¤¿¤á¤ÎÀßÄê
+;;pythonã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã®ã‚¨ãƒ©ãƒ¼ãŒã§ãªã„ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®è¨­å®š
 ;;(setq tab-width 4)
 ;;(set-variable 'python-indent-offset 4)
 ;;(set-variable 'python-indent-guess-indent-offset nil)
 
-;;mozc¤òmini buffer¤ÇÉ½¼¨
+;;mozcã‚’mini bufferã§è¡¨ç¤º
 (setq mozc-candidate-style 'echo-area)
 
-;;·Ù¹ğ²»¤ÎÂå¤ï¤ê¤Ë²èÌÌ¥Õ¥é¥Ã¥·¥å
+;;è­¦å‘ŠéŸ³ã®ä»£ã‚ã‚Šã«ç”»é¢ãƒ•ãƒ©ãƒƒã‚·ãƒ¥
 (setq visible-bell t)
-;;·Ù¹ğ²»¤â¥Õ¥é¥Ã¥·¥å¤âÁ´¤ÆÌµ¸ú
+;;è­¦å‘ŠéŸ³ã‚‚ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã‚‚å…¨ã¦ç„¡åŠ¹
 ;;(setq ring-bell-function 'ignore)
+
+;;ERC
+(add-to-list 'load-path' "~/elisp/erc")
+(require 'erc)
+
+;;Haskell-mode
+(autoload 'haskell-mode "haskell-mode" nil t)
+(autoload 'haskell-cabal "haskell-cabal" nil t)
+
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.cabal$" . haskell-cabal-mode))
+
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+
+;;Org-mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+;;C-hã§ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹æ©Ÿèƒ½
+(global-set-key "\C-h"'delete-backward-char)
