@@ -5,7 +5,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -61,8 +60,8 @@
 (set-buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(require 'mozc)
+;;(set-default-coding-systems 'utf-8)
+;;(require 'mozc)
 (setq default-input-method "japanese-mozc");
 (setq mozc-candidate-style 'overlay)
 
