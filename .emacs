@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -20,6 +19,23 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; フレーム関連
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; 起動時のフレーム設定
+(setq initial-frame-alist
+      (append (list
+               ;; 表示位置
+               '(top . 10)
+               '(left . 10)
+               ;; サイズ
+               '(width . 85) ;横
+               '(height . 40)) ;縦
+              initial-frame-alist))
+(setq default-frame-alist initial-frame-alist)
+
 ;;日本語設定
 (set-language-environment"Japanese")
 ;;(set-default-coding-systems 'utf-8-dos)
@@ -27,8 +43,8 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-(require 'mozc-im)
-(require 'mozc-popup)
+;;(require 'mozc-im)
+;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
 
 (setq default-input-method "japanese-mozc-im")
@@ -51,8 +67,9 @@
 
       
 ;;バックアップファイルを作成させない
-(setq make-backup-files nil)
-(setq auto-save-list-file-prefix nil)
+;; (setq auto-save-default nil)
+;; (setq make-backup-files nil)
+;; (setq auto-save-list-file-prefix nil)
 
 ;;終了時にオートセーブファイルを削除する
 (setq delete-auto-save-files t)
@@ -83,12 +100,12 @@
 (show-paren-mode 1)
 
 ;;ウィンドウ内に収まらないときだけカッコ内も光らせる
-(setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "gray")
-(set-face-foreground 'show-paren-match-face "black")
+;;(setq show-paren-style 'mixed)
+;;(set-face-background 'show-paren-match-face "gray")
+;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-default-font "Ricty Diminished")
+(set-default-font "Ricty Diminished-16")
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
 ;;(set-default-font "BugMaruPGothic")
@@ -126,9 +143,9 @@
 (package-initialize)
 
 ;;js2-mode
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js-mode-hook
-          (lambda ()
-            (make-local-variable 'js-indent-level)
-            (setq js-indent-level 2)))
+;;(require 'js2-mode)
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-hook 'js-mode-hook
+;;          (lambda ()
+;;(make-local-variable 'js-indent-level)
+;;            (setq js-indent-level 2)))
