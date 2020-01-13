@@ -38,20 +38,27 @@
 
 ;;日本語設定
 (set-language-environment"Japanese")
-;;(set-default-coding-systems 'utf-8-dos)
-;;(setq default-file-name-coding-system 'shift_jis);dired
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-;;(require 'mozc-im)
-;;(require 'mozc-popup)
-;;(require 'mozc-cursor-color)
 
 ;; 2020/1/14 Windows IME
 (setq default-input-method "W32-IME")
 (setq-default w32-ime-mode-line-state-indicator "[--]")
 (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
 (w32-ime-initialize)
+;; 日本語入力時にカーソルの色を変える設定
+(add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "black")))
+(add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
+
+;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
+(add-hook 'minibuffer-setup-hook 'deactivate-input-method)
+
+;; iserchに移行した際に日本語入力を無効にする
+(add-hook 'iserch-mode-hook '(lambda ()
+                               (deactivate-input-method)
+                               (setq w32-ime-composition-window (minibuffer-window))))
+(add-hook 'iserch-mode-end-hook '(lambda () (setq w32-ime-composition-window nil)))
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
@@ -67,8 +74,6 @@
 
 ;;カーソルの点滅をオフ
 (blink-cursor-mode 0)
-
-
       
 ;;バックアップファイルを作成させない
 ;; (setq auto-save-default nil)
