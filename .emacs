@@ -47,7 +47,11 @@
 ;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
 
-(setq default-input-method "japanese-mozc-im")
+;; 2020/1/14 Windows IME
+(setq default-input-method "W32-IME")
+(setq-default w32-ime-mode-line-state-indicator "[--]")
+(setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
+(w32-ime-initialize)
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
