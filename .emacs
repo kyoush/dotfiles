@@ -27,11 +27,15 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-(require 'mozc-im)
-(require 'mozc-popup)
+;;(require 'mozc-im)
+;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
 
-(setq default-input-method "japanese-mozc-im")
+;; 2020/1/14 Windows IME
+(setq default-input-method "W32-IME")
+(setq-default w32-ime-mode-line-state-indicator "[--]")
+(setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
+(w32-ime-initialize)
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
@@ -84,11 +88,11 @@
 
 ;;ウィンドウ内に収まらないときだけカッコ内も光らせる
 (setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "gray")
-(set-face-foreground 'show-paren-match-face "black")
+;;(set-face-background 'show-paren-match-face "gray")
+;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-default-font "Ricty Diminished")
+(set-default-font "Ricty Diminished 16")
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
 ;;(set-default-font "BugMaruPGothic")
