@@ -11,7 +11,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (mozc-temp mozc-popup mozc-im mozc))))
+ '(package-selected-packages
+   (quote
+    (rainbow-mode js2-mode mozc-temp mozc-popup mozc-im mozc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -76,8 +78,8 @@
 (blink-cursor-mode 0)
       
 ;;バックアップファイルを作成させない
-;; (setq auto-save-default nil)
-;; (setq make-backup-files nil)
+(setq auto-save-default nil) ;; .#*とかのファイルを作らない
+(setq make-backup-files nil) ;; *.~とかのファイルを作らない
 ;; (setq auto-save-list-file-prefix nil)
 
 ;;終了時にオートセーブファイルを削除する
@@ -152,9 +154,17 @@
 (package-initialize)
 
 ;;js2-mode
-;;(require 'js2-mode)
-;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;;(add-hook 'js-mode-hook
-;;          (lambda ()
-;;(make-local-variable 'js-indent-level)
-;;            (setq js-indent-level 2)))
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js-mode-hook
+          (lambda ()
+(make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
+;; reinbow-modeの設定(カラーコードに色をつける)
+(require 'rainbow-mode)
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'less-mode-hook 'rainbow-mode)
+(add-hook 'web-mode-hook 'rainbow-mode)
+(add-hook 'html-mode-hook 'rainbow-mode)
+(add-hook 'js2-mode-hook 'rainbow-mode)
