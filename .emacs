@@ -27,8 +27,8 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-(require 'mozc-im)
-(require 'mozc-popup)
+;;(require 'mozc-im)
+;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
 
 (setq default-input-method "japanese-mozc-im")
@@ -84,8 +84,8 @@
 
 ;;ウィンドウ内に収まらないときだけカッコ内も光らせる
 (setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "gray")
-(set-face-foreground 'show-paren-match-face "black")
+;;(set-face-background 'show-paren-match-face "gray")
+;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
 (set-default-font "Ricty Diminished")
@@ -126,9 +126,9 @@
 (package-initialize)
 
 ;;js2-mode
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js-mode-hook
-          (lambda ()
-            (make-local-variable 'js-indent-level)
-            (setq js-indent-level 2)))
+;;(require 'js2-mode)
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-hook 'js-mode-hook
+;;          (lambda ()
+;;            (make-local-variable 'js-indent-level)
+;;            (setq js-indent-level 2)))
