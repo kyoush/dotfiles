@@ -37,6 +37,20 @@
 (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
 (w32-ime-initialize)
 
+;; 日本語入力時にカーソルの色を変える設定
+(add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "black")))
+(add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
+
+;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
+(add-hook 'minibuffer-setup-hook 'deactivate-input-method)
+
+;; iserchに移行した際に日本語入力を無効にする
+(add-hook 'iserch-mode-hook '(lambda ()
+                               (deactivate-input-method)
+                               (setq w32-ime-composition-window (minibuffer-window))))
+(add-hook 'iserch-mode-end-hook '(lambda () (setq w32-ime-composition-window nil)))
+
+
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
 
@@ -125,6 +139,7 @@
 (add-to-list 'package-archives '("malpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;;初期化
 (package-initialize)
