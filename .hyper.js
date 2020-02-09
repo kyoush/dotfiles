@@ -49,7 +49,7 @@ module.exports = {
         {name: "WSL", shell: 'C:\\Windows\\System32\\bash.exe', args: ['--login']},
         {name: "Git", shell: 'C:\\Program Files\\Git\\bin\\bash.exe', args: ["--login"]},
       ]},
-      {name: "Powershell", shell: "powershell.exe"}
+      {name: "Powershell", shell: 'pwsh.exe'}
     ],
     env: { LANG: 'ja_JP.UTF-8' },
     bell: 'SOUND',

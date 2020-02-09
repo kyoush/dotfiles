@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -12,7 +11,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (mozc-temp mozc-popup mozc-im mozc))))
+ '(package-selected-packages
+   (quote
+    (rainbow-mode js2-mode mozc-temp mozc-popup mozc-im mozc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -20,23 +21,34 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; フレーム関連
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; 起動時のフレーム設定
+(setq initial-frame-alist
+      (append (list
+               ;; 表示位置
+               '(top . 10)
+               '(left . 10)
+               ;; サイズ
+               '(width . 85) ;横
+               '(height . 40)) ;縦
+              initial-frame-alist))
+(setq default-frame-alist initial-frame-alist)
+
 ;;日本語設定
 (set-language-environment"Japanese")
-;;(set-default-coding-systems 'utf-8-dos)
-;;(setq default-file-name-coding-system 'shift_jis);dired
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-;;(require 'mozc-im)
-;;(require 'mozc-popup)
-;;(require 'mozc-cursor-color)
 
 ;; 2020/1/14 Windows IME
 (setq default-input-method "W32-IME")
 (setq-default w32-ime-mode-line-state-indicator "[--]")
 (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
 (w32-ime-initialize)
-
 ;; 日本語入力時にカーソルの色を変える設定
 (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "black")))
 (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
@@ -49,7 +61,6 @@
                                (deactivate-input-method)
                                (setq w32-ime-composition-window (minibuffer-window))))
 (add-hook 'iserch-mode-end-hook '(lambda () (setq w32-ime-composition-window nil)))
-
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
@@ -65,12 +76,11 @@
 
 ;;カーソルの点滅をオフ
 (blink-cursor-mode 0)
-
-
       
 ;;バックアップファイルを作成させない
-(setq make-backup-files nil)
-(setq auto-save-list-file-prefix nil)
+(setq auto-save-default nil) ;; .#*とかのファイルを作らない
+(setq make-backup-files nil) ;; *.~とかのファイルを作らない
+;; (setq auto-save-list-file-prefix nil)
 
 ;;終了時にオートセーブファイルを削除する
 (setq delete-auto-save-files t)
@@ -101,12 +111,12 @@
 (show-paren-mode 1)
 
 ;;ウィンドウ内に収まらないときだけカッコ内も光らせる
-(setq show-paren-style 'mixed)
+;;(setq show-paren-style 'mixed)
 ;;(set-face-background 'show-paren-match-face "gray")
 ;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-default-font "Ricty Diminished 16")
+(set-default-font "Ricty Diminished-16")
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
 ;;(set-default-font "BugMaruPGothic")
@@ -139,7 +149,7 @@
 (add-to-list 'package-archives '("malpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 
 ;;初期化
 (package-initialize)
@@ -149,5 +159,13 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js-mode-hook
           (lambda ()
-            (make-local-variable 'js-indent-level)
+(make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
+
+;; reinbow-modeの設定(カラーコードに色をつける)
+(require 'rainbow-mode)
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'less-mode-hook 'rainbow-mode)
+(add-hook 'web-mode-hook 'rainbow-mode)
+(add-hook 'html-mode-hook 'rainbow-mode)
+(add-hook 'js2-mode-hook 'rainbow-mode)
