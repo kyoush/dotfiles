@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -47,8 +46,6 @@
 
 ;;カーソルの点滅をオフ
 (blink-cursor-mode 0)
-
-
       
 ;;バックアップファイルを作成させない
 (setq make-backup-files nil)
@@ -88,7 +85,7 @@
 ;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-default-font "Ricty Diminished")
+;;(set-default-font "Ricty Diminished")
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
 ;;(set-default-font "BugMaruPGothic")
