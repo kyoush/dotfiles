@@ -27,8 +27,8 @@
 ;;フレームサイズ指定
 (setq default-frame-alist
 	  '(
-		(width . 80)
-		(height . 31)
+		(width . 65)
+		(height . 30)
 		))
 
 ;;フォントをRictyにする
@@ -46,7 +46,7 @@
 ;;(add-to-list 'default-frame-alist '(font . "源の角明朝 JP"))
 
 ;; 半角英字
-(set-face-attribute 'default nil :family "Ubuntu Mono" :height 140)
+(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 
 ;; Japanese font
 (set-fontset-font (frame-parameter nil 'font)
@@ -62,9 +62,9 @@
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
-(require 'mozc)
-(setq default-input-method "japanese-mozc");
-(setq mozc-candidate-style 'overlay)
+;;(require 'mozc)
+;;(setq default-input-method "japanese-mozc");
+;;(setq mozc-candidate-style 'overlay)
 
 ;;バックアップファイルを作成させない
 (setq make-backup-files nil)
@@ -125,7 +125,7 @@
 ;;(set-variable 'python-indent-guess-indent-offset nil)
 
 ;;mozcをmini bufferで表示
-(setq mozc-candidate-style 'echo-area)
+;;(setq mozc-candidate-style 'echo-area)
 
 ;;警告音の代わりに画面フラッシュ
 (setq visible-bell t)
