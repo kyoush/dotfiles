@@ -25,6 +25,9 @@ font pango: Source Code Pro 10
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# set wallpaper 2023-10-05 by k.kamura
+exec --no-startup-id ~/.fehbg
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -66,9 +69,18 @@ bindsym $mod+Tab exec --no-startup-id "rofi -combi drun,run -modi drun,run -show
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # Screenshots 2023.08.07 by k.kamura
-bindsym Print            exec --no-startup-id gm import -window root "/home/$USER/Pictures/$(date +'%Y%m%d_%H%M%S').png"
-bindsym $mod+Print       exec --no-startup-id gm import "/home/$USER/Pictures/$(date +'%Y%m%d_%H%M%S').png"
-bindsym $mod+Shift+Pirnt exec --no-startup-id maim --capturebackground --hidecursor --select "/home/$USER/Pictures/$(date --iso-8601=seconds).png"
+bindsym Print            exec --no-startup-id filename="$(date --iso-8601=seconds)-desktop.png" && \
+                         maim --format=png --hidecursor "/home/$USER/Pictures/$filename" && \
+			 notify-send -u normal "Desktop Captured!" "filename: $filename" -i window-new-symbolic.symbolic.png
+bindsym $mod+Print       exec --no-startup-id filename="$(date --iso-8601=seconds)-active.png" && \
+                         maim --format=png --hidecursor --window $(xdotool getactivewindow) "/home/$USER/Pictures/$filename" && \
+			 notify-send -u normal "Active window Captured!" "filename: $filename" -i window-new-symbolic.symbolic.png
+bindsym $mod+Shift+Print exec --no-startup-id filename="$(date --iso-8601=seconds)-select.png" && \
+                         maim --format=png --select --hidecursor "/home/$USER/Pictures/$filename" && \
+			 notify-send -u normal "Selected range Captured!" "filename: $filename" -i window-new-symbolic.symbolic.png
+bindsym $mod+Shift+S     exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png && \
+                         notify-send -u normal "Selected region has copied to clipboard!" -i mail-attachment-symbolic.symbolic.png
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -205,7 +217,7 @@ bar {
 	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
 		-m cpu memory disk pulseout date time\
-		-p time.format=" %R:%S" date.format=" %m/%d (%a)" memory.format=" {percent:05.02f}%" title.max=50 title.scroll=True pulsectl.autostart=true pulsectl.limit=100% pulsectl.showbars=true\
+		-p time.format=" %R:%S" date.format=" %m/%d (%a)" memory.format=" {percent:05.02f}%" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
 		-t iceberg-dark-powerline
 }
 
