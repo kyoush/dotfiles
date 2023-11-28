@@ -29,8 +29,16 @@ PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
 
+if [[ -x `which colordiff` ]]; then
+	alias diff='colordiff -u'
+else
+	alias diff='diff -u'
+fi
+
 GPG_TTY=$(tty)
 export GPG_TTY
+
+export PAGER=less
 
 export LESSCHARSET=utf-8
 

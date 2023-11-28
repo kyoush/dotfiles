@@ -213,6 +213,7 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango: Iosevka, Icons 11
 	position top
+	strip_workspace_numbers yes
         
 	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
