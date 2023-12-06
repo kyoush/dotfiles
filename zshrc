@@ -2,7 +2,7 @@
 
 autoload -Uz colors
 colors
-PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color} $ "
+PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$'\n'"$ "
 
 alias ip='ip --color=auto'
 alias ls='ls --color=auto'
