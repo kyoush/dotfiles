@@ -176,10 +176,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Define default gaps value
-#set $default_inner_gaps 15
-#set $default_outer_gaps 5
-#gaps inner $default_inner_gaps
-#gaps outer $default_outer_gaps
+set $default_inner_gaps 8 
+set $default_outer_gaps 0
+gaps inner $default_inner_gaps
+gaps outer $default_outer_gaps
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -218,7 +218,7 @@ bar {
 	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
 		-m cpu memory disk pulseout date time\
-		-p time.format=" %R:%S" date.format=" %m/%d (%a)" memory.format=" {percent:05.02f}%" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
+		-p time.format=" %R:%S" date.format=" %m/%d (%a)" memory.format=" {percent:05.02f}%" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true date.locale=ja_JP.UTF-8 time.locale=ja_JP.UTF-8\
 		-t iceberg-dark-powerline
 }
 
