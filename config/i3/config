@@ -176,10 +176,12 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Define default gaps value
-#set $default_inner_gaps 15
-#set $default_outer_gaps 5
-#gaps inner $default_inner_gaps
-#gaps outer $default_outer_gaps
+# 1. Inner gaps are space between two adjacent windows (or split containers).
+# 2. Outer gaps are space along the screen edges. You can configure each side (left, right, top, bottom) separately.
+set $default_inner_gaps 8
+set $default_outer_gaps 0 
+gaps inner $default_inner_gaps
+gaps outer $default_outer_gaps
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

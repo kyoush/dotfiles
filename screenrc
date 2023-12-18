@@ -11,3 +11,7 @@ termcapinfo xterm* ti@:te@
 
 escape ^Tt
 
+logfile /mnt/hdd/log/screen/%Y%m%d_%c%s-%n-screen.log
+deflog flush secs
+deflog on
+
