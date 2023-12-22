@@ -11,7 +11,10 @@ termcapinfo xterm* ti@:te@
 
 escape ^Tt
 
-logfile /mnt/hdd/log/screen/%Y%m%d_%c%s-%n-screen.log
-deflog flush secs
+# log
 deflog on
+logfile /mnt/hdd/log/screen/%Y%m%d_%c%s-%n-screen.log
+logfile flush 5
+logtstamp on
+logtstamp after 300
 
