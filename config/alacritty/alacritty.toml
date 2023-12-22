@@ -28,7 +28,7 @@ LC_CTYPE = "en_US.UTF-8"
 TERM = "xterm-256color"
 
 [font]
-size = 8
+size = 9
 
 [font.bold]
 family = "HackNerdFont"
