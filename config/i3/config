@@ -28,6 +28,9 @@ exec --no-startup-id dex --autostart --environment i3
 # set wallpaper 2023-10-05 by k.kamura
 exec --no-startup-id ~/.fehbg
 
+# autostart fcitx5
+exec --no-startup-id fcitx5
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -219,8 +222,8 @@ bar {
         
 	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
-		-m cpu memory disk pulseout date time\
-		-p time.format=" %R:%S" date.format=" %m/%d (%a)" memory.format=" {percent:05.02f}%" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
+		-m cpu sensors spacer memory spacer disk pulseout date time\
+		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
 		-t iceberg-dark-powerline
 }
 
