@@ -28,20 +28,25 @@ LC_CTYPE = "en_US.UTF-8"
 TERM = "xterm-256color"
 
 [font]
-size = 9
+size = 10
 
 [font.bold]
-family = "HackNerdFont"
+# family = "HackNerdFont"
+family = 'Monaspace Neon'
+# family = 'Monaspace Argon'
 style = "Bold"
 
 [font.italic]
-family = "HackNerdFont"
+# family = "HackNerdFont"
+family = 'Monaspace Neon'
+# family = 'Monaspace Argon'
 style = "Italic"
 
 [font.normal]
 # family = 'Mononoki NerdFont'
-# family = 'Monaspace Neon'
-family = 'HackNerdFont'
+family = 'Monaspace Neon'
+# family = 'Monaspace Argon'
+# family = 'HackNerdFont'
 style = "Regular"
 
 [window]
