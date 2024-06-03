@@ -39,7 +39,9 @@ family = "HackNerdFont"
 style = "Italic"
 
 [font.normal]
-family = "HackNerdFont"
+# family = 'Mononoki NerdFont'
+# family = 'Monaspace Neon'
+family = 'HackNerdFont'
 style = "Regular"
 
 [window]
