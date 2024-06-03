@@ -3,7 +3,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;;(package-initialize)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -27,8 +27,8 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-(require 'mozc-im)
-(require 'mozc-popup)
+;;(require 'mozc-im)
+;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
 
 (setq default-input-method "japanese-mozc-im")
@@ -64,7 +64,7 @@
 (column-number-mode t)
 
 ;;行数を表示する
-(global-linum-mode t)
+;;(global-linum-mode t)
 
 ;;shut up, emacs!
 (setq display-warning-minumum-level :error)
@@ -84,11 +84,12 @@
 
 ;;ウィンドウ内に収まらないときだけカッコ内も光らせる
 (setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "gray")
-(set-face-foreground 'show-paren-match-face "black")
+;;(set-face-background 'show-paren-match-face "gray")
+;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-default-font "Ricty Diminished")
+(set-frame-font "HackNerdFont 10" nil t) ;; Emacs 23.1 or later
+;;(set-default-font "Ricty Diminished") ;; Older version of emacs
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
 ;;(set-default-font "BugMaruPGothic")
@@ -126,9 +127,9 @@
 (package-initialize)
 
 ;;js2-mode
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js-mode-hook
-          (lambda ()
-            (make-local-variable 'js-indent-level)
-            (setq js-indent-level 2)))
+;;(require 'js2-mode)
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(add-hook 'js-mode-hook
+;;          (lambda ()
+;;            (make-local-variable 'js-indent-level)
+;;            (setq js-indent-level 2)))
