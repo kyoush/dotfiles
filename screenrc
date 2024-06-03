@@ -13,7 +13,7 @@ escape ^Tt
 
 # log
 deflog on
-logfile /mnt/hdd/log/screen/%Y%m%d_%c%s-%n-screen.log
+logfile /mnt/hdd/log/screen/%Y%m%d_%02c%s-%n-screen.log
 logfile flush 5
 logtstamp on
 logtstamp after 300
