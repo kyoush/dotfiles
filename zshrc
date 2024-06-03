@@ -1,5 +1,11 @@
 # Created by newuser for 5.9
 
+function precmd() {
+	if [ ! -z $TMUX ]; then
+		tmux refresh-client -S
+	fi
+}
+
 export LANG=C
 
 autoload -Uz compinit
@@ -39,7 +45,7 @@ function rprompt-git-current-branch {
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
     # 全て commit されてクリーンな状態
-    branch_status="${color}${green}${branch}"
+    branch_status="${color}${green}%}${branch}"
   elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
     # git 管理されていないファイルがある状態
     branch_status="${color}${red}${branch}?"
@@ -58,7 +64,7 @@ function rprompt-git-current-branch {
     branch_status="${color}${blue}${branch}"
   fi
   # ブランチ名を色付きで表示する
-  echo "${branch_status}$branch_name${reset}"
+  echo "${branch_status}${branch_name}${reset}"
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
@@ -74,6 +80,7 @@ setopt hist_ignore_all_dups
 
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias tmux='tmux -u'
 
 if [[ -x `which colordiff` ]]; then
 	alias diff='colordiff -u'
@@ -82,9 +89,14 @@ else
 fi
 
 GPG_TTY=$(tty)
+
 export GPG_TTY
-
 export PAGER=less
-
 export LESSCHARSET=utf-8
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
