@@ -81,7 +81,7 @@ bindsym $mod+Print       exec --no-startup-id filename="$(date --iso-8601=second
 bindsym $mod+Shift+Print exec --no-startup-id filename="$(date --iso-8601=seconds)-select.png" && \
                          maim --format=png --select --hidecursor "/home/$USER/Pictures/$filename" && \
 			 notify-send -u normal "Selected range Captured!" "filename: $filename" -i window-new-symbolic.symbolic.png
-bindsym $mod+Shift+S     exec --no-startup-id maim --format=png --select | xclip -selection clipboard -t image/png && \
+bindsym $mod+Shift+S     exec --no-startup-id maim --format=png --select --hidecursor | xclip -selection clipboard -t image/png && \
                          notify-send -u normal "Selected region has copied to clipboard!" -i mail-attachment-symbolic.symbolic.png
 
 # change focus
@@ -220,9 +220,9 @@ bar {
 	position top
 	strip_workspace_numbers yes
         
-	# bumblebee-status -----------------------------------------
+	# bumblebee-status ----------------------------------------- disk pulseout date
 	status_command bumblebee-status \
-		-m cpu sensors spacer memory spacer disk pulseout date time\
+		-m kernel cpu sensors spacer memory spacer disk date time\
 		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
 		-t iceberg-dark-powerline
 }
