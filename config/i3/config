@@ -223,7 +223,7 @@ bar {
 	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
 		-m kernel spacer nic spacer cpu sensors spacer memory spacer disk pulseout date time\
-		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true nic.exclude="tailscale*,veth*,docker*,br-*,lo"\
+		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=false pulseout.limit=100% pulseout.showbars=true nic.exclude="tailscale*,veth*,docker*,br-*,lo"\
 		-t iceberg-dark-powerline
 }
 
