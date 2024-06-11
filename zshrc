@@ -78,10 +78,13 @@ RPROMPT='`rprompt-git-current-branch`'
 
 setopt hist_ignore_all_dups
 
-alias ip='ip -color=auto'
-alias ls='ls --color=auto'
 alias tmux='tmux -u'
 
+# コンソールのカラー出力
+# https://wiki.archlinux.org/title/Color_output_in_console
+alias ip='ip -color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 if [[ -x `which colordiff` ]]; then
 	alias diff='colordiff -u'
 else
