@@ -35,18 +35,18 @@ size = 10
 [font.bold]
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
-# family = 'Monaspace Argon'
+family = 'Monaspace Argon'
 # family = 'Moralerspace Neon'
-family = 'Moralerspace Xenon'
+# family = 'Moralerspace Xenon'
 # family = 'Bizin Gothic'
 style = "Bold"
 
 [font.italic]
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
-# family = 'Monaspace Argon'
+family = 'Monaspace Argon'
 # family = 'Moralerspace Neon'
-family = 'Moralerspace Radon'
+# family = 'Moralerspace Radon'
 style = "Italic"
 
 [font.normal]
@@ -57,6 +57,8 @@ style = "Italic"
 # family = 'Moralerspace Neon'
 family = 'Moralerspace Argon'
 # family = 'Moralerspace Xenon'
+# family = 'Moralerspace Radon'
+# family = 'Moralerspace Krypton'
 # family = 'Bizin Gothic'
 style = "Regular"
 
