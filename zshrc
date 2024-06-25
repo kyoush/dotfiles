@@ -5,15 +5,15 @@ compinit
 
 zstyle ':completion:*' menu select
 
-if [[ ! -n $TMUX ]]; then
-	# get the IDs
-	ID="`tmux list-sessions`"
-	if [[ -z "$ID" ]]; then
-		tmux new-session
-	fi
-	ID="`echo $ID | $PERCOL | cut -d: -f1`"
-	tmux attach-session -t "$ID"
-fi
+# if [[ ! -n $TMUX ]]; then
+#	# get the IDs
+#	ID="`tmux list-sessions`"
+#	if [[ -z "$ID" ]]; then
+#		tmux new-session
+#	fi
+#	ID="`echo $ID | $PERCOL | cut -d: -f1`"
+#	tmux attach-session -t "$ID"
+# fi
 
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
@@ -76,5 +76,6 @@ alias ls='ls --color=auto'
 GPG_TTY=$(tty)
 export GPG_TTY
 
-export LESSCHARSET=utf-8
+export LANG=en_US.UTF-8
 
+export LESSCHARSET=utf-8
