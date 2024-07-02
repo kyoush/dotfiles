@@ -78,10 +78,13 @@ RPROMPT='`rprompt-git-current-branch`'
 
 setopt hist_ignore_all_dups
 
+# tmux utf-8 mode
 alias tmux='tmux -u'
 
-# コンソールのカラー出力
-# https://wiki.archlinux.org/title/Color_output_in_console
+# refresh timeout @see wiki.archlinux.jp/index.php/Sudo
+alias sudo='sudo -v; sudo '
+
+# @see wiki.archlinux.jp/index.php/コンソールのカラー出力
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
