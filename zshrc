@@ -78,6 +78,13 @@ RPROMPT='`rprompt-git-current-branch`'
 
 setopt hist_ignore_all_dups
 
+# tmux utf-8 mode
+alias tmux='tmux -u'
+
+# refresh timeout @see wiki.archlinux.jp/index.php/Sudo
+alias sudo='sudo -v; sudo '
+
+# @see wiki.archlinux.jp/index.php/コンソールのカラー出力
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
 alias tmux='tmux -u'
