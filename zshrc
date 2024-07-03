@@ -23,7 +23,8 @@ SAVEHIST=50000
 function rprompt-git-current-branch {
   local branch_name st branch_status
 
-  branch='\ue0a0'
+  # branch='\ue0a0'
+  branch=''
   color='%{\e[38;5;' #  文字色を設定
   green='114m%}'
 
