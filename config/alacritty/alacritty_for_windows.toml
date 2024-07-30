@@ -1,0 +1,64 @@
+# ================= GENERAL =================
+# for Windows
+[terminal]
+shell = { program = "C:\\Windows\\System32\\wsl.exe", args = ["--cd ~"] }
+
+# ================= ENV =================
+[env]
+LANG = "en_US.UTF-8"
+LC_CTYPE = "en_US.UTF-8"
+TERM = "xterm-256color"
+
+# ================= WINDOW =================
+[window]
+dimensions = { columns = 120, lines = 45}
+position = { x = 20, y = 30}
+opacity = 0.9
+title = "Alacritty"
+dynamic_title = true
+
+# ================= FONT =================
+[font]
+
+# Normal font style
+normal = { family = "Explex35 Console NF", style = "Regular" }
+# normal = { family = "Moralerspace Argon", style = "Regular" }
+
+# Bold font style
+bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
+
+# Italic font style
+italic = { style = "Italic" }  # Inherits family from normal, Default style: Italic
+
+# Bold Italic font style
+bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
+
+# Font size in points
+size = 10.25
+
+# ================= COLOR =================
+# Colors (One Half Dark)
+[colors.bright]
+black = "0x282c34"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xdcdfe4"
+yellow = "0xe5c07b"
+
+[colors.normal]
+black = "0x282c34"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xdcdfe4"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x282c34" # (one half dark)
+# background = "0x300924" # (Ubuntu)
+foreground = "0xdcdfe4"
