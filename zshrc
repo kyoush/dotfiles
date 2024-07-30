@@ -67,12 +67,13 @@ autoload -Uz colors
 colors
 
 PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$'\n'"$ "
-RPROMPT='`rprompt-git-current-branch`'
+#RPROMPT='`rprompt-git-current-branch`'
 
 setopt hist_ignore_all_dups
 
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias diff='diff --color=auto'
 
 GPG_TTY=$(tty)
 export GPG_TTY
