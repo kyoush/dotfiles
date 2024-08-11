@@ -41,6 +41,9 @@ exec --no-startup-id picom -b
 #   use XKBOPTIONS="ctrl:nocaps" variable in `/etc/default/keyboard`
 exec --no-startup-id localectl --no-convert set-x11-keymap us jp105 "" ctrl:nocaps 
 
+# autostart libinput-gestures for laptop
+exec --no-startup-id libinput-gestures-setup autostart start
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
