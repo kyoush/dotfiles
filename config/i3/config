@@ -67,6 +67,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && export LANG=C && isMute=$(pactl get-sink-mute @DEFAULT_SINK@) && notify-send -r 998 "Volume" "🔇 ${isMute}" && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && LANG=C && isMute=$(pactl get-source-mute @DEFAULT_SOURCE@) && notify-send -r 997 "Mic Volume" "🎤🔇 ${isMute}" && $refresh_i3status
 
+# brightness control for laptop / 2024-08-11 by k.kamura
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && notify-send -r 999 "Brightness" "🔆 $(($(brightnessctl get)*100/$(brightnessctl max)))%"
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- && notify-send -r 999 "Brightness" "🔅 $(($(brightnessctl get)*100/$(brightnessctl max)))%"
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
