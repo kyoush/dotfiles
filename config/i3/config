@@ -233,8 +233,8 @@ bar {
         
 	# bumblebee-status ----------------------------------------- disk pulseout date
 	status_command bumblebee-status \
-		-m kernel cpu sensors spacer memory spacer disk date time\
-		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true\
+		-m kernel spacer nic ping spacer cpu sensors memory disk spacer date time\
+		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true nic.exclude="enp*,lo" nic.format="{intf} [{ip}]" ping.address="yamaha.com"\
 		-t iceberg-dark-powerline
 }
 
