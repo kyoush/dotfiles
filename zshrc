@@ -87,6 +87,7 @@ alias sudo='sudo -v; sudo '
 # @see wiki.archlinux.jp/index.php/コンソールのカラー出力
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias tmux='tmux -u'
 
 if [[ -x `which colordiff` ]]; then
