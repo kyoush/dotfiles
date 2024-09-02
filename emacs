@@ -13,25 +13,41 @@
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(inhibit-startup-screen t)
  '(package-selected-packages (quote (mozc-temp mozc-popup mozc-im mozc))))
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+)
+
+(setq inhibit-startup-screen t)
 
 ;;日本語設定
+(set-locale-environment nil)
 (set-language-environment"Japanese")
+(set-language-environment"Japanese")
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 ;;(set-default-coding-systems 'utf-8-dos)
 ;;(setq default-file-name-coding-system 'shift_jis);dired
 (prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 ;;(require 'mozc-im)
 ;;(require 'mozc-popup)
 ;;(require 'mozc-cursor-color)
-
-(setq default-input-method "japanese-mozc-im")
+;;(require 'mozc)
+;;(setq default-input-method "japanese-mozc");
+;;(setq default-input-method "japanese-mozc-im")
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
@@ -96,6 +112,18 @@
 ;;(set-default-font "PixelMplus12-Regular")
 ;;(set-default-font "mplus-1mn-regular")
 
+;;(global-whitespace-mode 1)
+
+(global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
+
+;; shut up, emacs!
+(setq display-warning-minimum-level :error)
+
+;;(setq inhibit-startup-echo-area-message "USERNAME")
+;;(setq inhibit-startup-message t)
+
+;;(global-set-key "\C-h\C-s" "\C-a\C- \C-n\M-w\C-y")
+(global-set-key "\C-h\C-s" "\C-a\C-k\C-k\C-y\C-y")
 (put 'upcase-region 'disabled nil)
 
 ;; インデント
