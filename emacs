@@ -11,7 +11,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tsdh-dark)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (mozc-temp mozc-popup mozc-im mozc))))
+ '(package-selected-packages
+   (quote
+    (rainbow-mode js2-mode mozc-temp mozc-popup mozc-im mozc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -38,16 +40,27 @@
 
 ;;日本語設定
 (set-language-environment"Japanese")
-;;(set-default-coding-systems 'utf-8-dos)
-;;(setq default-file-name-coding-system 'shift_jis);dired
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-;;(require 'mozc-im)
-;;(require 'mozc-popup)
-;;(require 'mozc-cursor-color)
 
-(setq default-input-method "japanese-mozc-im")
+;; 2020/1/14 Windows IME
+(setq default-input-method "W32-IME")
+(setq-default w32-ime-mode-line-state-indicator "[--]")
+(setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
+(w32-ime-initialize)
+;; 日本語入力時にカーソルの色を変える設定
+(add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "black")))
+(add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
+
+;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
+(add-hook 'minibuffer-setup-hook 'deactivate-input-method)
+
+;; iserchに移行した際に日本語入力を無効にする
+(add-hook 'iserch-mode-hook '(lambda ()
+                               (deactivate-input-method)
+                               (setq w32-ime-composition-window (minibuffer-window))))
+(add-hook 'iserch-mode-end-hook '(lambda () (setq w32-ime-composition-window nil)))
 
 ;;popupスタイルを使用する
 (setq mozc-condidate-style 'popup)
@@ -63,12 +76,10 @@
 
 ;;カーソルの点滅をオフ
 (blink-cursor-mode 0)
-
-
       
 ;;バックアップファイルを作成させない
-;; (setq auto-save-default nil)
-;; (setq make-backup-files nil)
+(setq auto-save-default nil) ;; .#*とかのファイルを作らない
+(setq make-backup-files nil) ;; *.~とかのファイルを作らない
 ;; (setq auto-save-list-file-prefix nil)
 
 ;;終了時にオートセーブファイルを削除する
@@ -143,9 +154,17 @@
 (package-initialize)
 
 ;;js2-mode
-;;(require 'js2-mode)
-;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;;(add-hook 'js-mode-hook
-;;          (lambda ()
-;;(make-local-variable 'js-indent-level)
-;;            (setq js-indent-level 2)))
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js-mode-hook
+          (lambda ()
+(make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
+;; reinbow-modeの設定(カラーコードに色をつける)
+(require 'rainbow-mode)
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'less-mode-hook 'rainbow-mode)
+(add-hook 'web-mode-hook 'rainbow-mode)
+(add-hook 'html-mode-hook 'rainbow-mode)
+(add-hook 'js2-mode-hook 'rainbow-mode)
