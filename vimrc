@@ -1,6 +1,6 @@
 "文字コードと改行コードの設定
-"set encoding=utf-8
-"scriptencoding utf-8
+set encoding=utf-8
+scriptencoding utf-8
 "set fileencoding=utf-8, cp932, sjis, utf-161e
 "set fileformats=dos, unix
 
@@ -48,5 +48,8 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+"タグ・ファイル
+set tags=./.tags;
 
 call plug#end()
