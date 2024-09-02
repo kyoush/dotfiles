@@ -1,5 +1,7 @@
 # dotfiles
 
+My dotfiles for main(wide display desktop), laptop, raspi, wsl, headless environment.
+
 ## branches
 
 - [main](https://github.com/kyoush/dotfiles/tree/main): ワイドディスプレイのデスクトップ環境向け
