@@ -3,6 +3,9 @@
 autoload -Uz compinit
 compinit
 
+autoload -Uz colors
+colors
+
 zstyle ':completion:*' menu select
 
 if [[ ! -n $TMUX ]]; then
