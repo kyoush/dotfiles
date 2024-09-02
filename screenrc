@@ -1,0 +1,20 @@
+# screenrc
+
+# scroll buffer (press ctrl-a esc)
+defscrollback 50000
+
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+
+termcapinfo xterm* ti@:te@
+
+escape ^Tt
+
+# log
+deflog on
+logfile /mnt/hdd/log/screen/%Y%m%d_%02c%s-%n-screen.log
+logfile flush 5
+logtstamp on
+logtstamp after 300
+

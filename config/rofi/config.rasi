@@ -1,0 +1,8 @@
+configuration {
+	columns: 2;
+	font: "SourceHanSans SemiBold 12";
+	show-icons: true;
+	kb-mode-next: "Control+o";
+	kb-mode-previous: "Control+i";
+}
+@theme "solarized"
