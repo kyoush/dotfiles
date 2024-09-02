@@ -234,10 +234,10 @@ bar {
 	position top
 	strip_workspace_numbers yes
         
-	# bumblebee-status ----------------------------------------- disk pulseout date
+	# bumblebee-status -----------------------------------------
 	status_command bumblebee-status \
-		-m kernel spacer nic ping spacer cpu sensors memory disk spacer date time\
-		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true nic.exclude="enp*,lo" nic.format="{intf} [{ip}]" ping.address="yamaha.com"\
+		-m kernel spacer nic ping spacer cpu sensors memory disk spacer pulseout date time\
+		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.limit=100% pulseout.showbars=true nic.exclude="enp*,lo" nic.format="{intf} [{ip}]" ping.address="yamaha.com"\
 		-t iceberg-dark-powerline
 }
 
