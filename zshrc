@@ -106,3 +106,6 @@ export LANG=C.UTF-8
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+
+export PATH=~/miniconda3/bin:$PATH
+source ~/miniconda3/etc/profile.d/conda.sh
