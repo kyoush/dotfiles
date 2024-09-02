@@ -2,7 +2,7 @@
 
 ## branch: wsl
 
-- WSL環境向けdotfiles
+WSL: Windows Subsystem Linux for Linux環境向けのdotfiles
 
 - WSL特有の注意点
   - nardフォントなどが無い普通の環境でも表示が崩れないように、powerlineなどの使用を避ける
