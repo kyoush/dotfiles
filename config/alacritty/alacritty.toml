@@ -20,8 +20,8 @@ white = "0xdcdfe4"
 yellow = "0xe5c07b"
 
 [colors.primary]
-# background = "0x282c34" # (one half dark)
-background = "0x300924" # (Ubuntu)
+background = "0x282c34" # (one half dark)
+# background = "0x300924" # (Ubuntu)
 foreground = "0xdcdfe4"
 
 [env]
