@@ -30,32 +30,34 @@ LC_CTYPE = "en_US.UTF-8"
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 8
 
 [font.bold]
+family = 'Moralerspace Argon'
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
-family = 'Monaspace Argon'
+# family = 'Monaspace Argon'
 # family = 'Moralerspace Neon'
 # family = 'Moralerspace Xenon'
 # family = 'Bizin Gothic'
 style = "Bold"
 
 [font.italic]
+family = 'Moralerspace Argon'
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
-family = 'Monaspace Argon'
+# family = 'Monaspace Argon'
 # family = 'Moralerspace Neon'
 # family = 'Moralerspace Radon'
 style = "Italic"
 
 [font.normal]
+family = 'Moralerspace Argon'
 # family = 'Mononoki NerdFont'
 # family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
 # family = 'HackNerdFont'
 # family = 'Moralerspace Neon'
-family = 'Moralerspace Argon'
 # family = 'Moralerspace Xenon'
 # family = 'Moralerspace Radon'
 # family = 'Moralerspace Krypton'
