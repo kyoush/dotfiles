@@ -18,6 +18,9 @@ fpath=(~/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 
+autoload -Uz colors
+colors
+
 zstyle ':completion:*' menu select
 
 if [[ ! -n $TMUX ]]; then
