@@ -12,3 +12,4 @@ My dotfiles for main(wide display desktop), laptop, raspi, wsl, headless environ
 - Wi-Fi接続が前提。電波強度のステータスも表示できればなお良い。
 - 物理的な移動がされる前提。ネットワークが頻繁に切り替わる想定
 - バッテリー駆動。バッテリー残量の表示や、省電力設定も心がける
+- ポインティングデバイスは、タッチパッドが主要な前提。3本指ジェスチャーなど活用する
