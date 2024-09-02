@@ -15,7 +15,7 @@
  '(package-selected-packages (quote (mozc-temp mozc-popup mozc-im mozc))))
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(show-paren-mode t))
+ '(show-paren-mode t)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -81,6 +81,7 @@
 
 ;;行数を表示する
 ;;(global-linum-mode t)
+(global-display-line-numbers-mode)
 
 ;;shut up, emacs!
 (setq display-warning-minumum-level :error)
@@ -104,7 +105,7 @@
 ;;(set-face-foreground 'show-paren-match-face "black")
 
 ;;フォント
-(set-frame-font "HackNerdFont 10" nil t) ;; Emacs 23.1 or later
+(set-frame-font "Moralerspace Argon 10" nil t) ;; Emacs 23.1 or later
 ;;(set-default-font "Ricty Diminished") ;; Older version of emacs
 ;;(set-default-font "Nasu Regular")
 ;;(set-default-font "Yu Gothic UI Regular")
