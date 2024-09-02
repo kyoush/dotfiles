@@ -35,6 +35,9 @@ exec --no-startup-id fcitx5
 # autostart picom
 exec --no-startup-id picom -b
 
+# no more caps lock
+exec --no-startup-id localectl --no-convert set-x11-keymap us jp105 "" ctrl:nocaps
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
