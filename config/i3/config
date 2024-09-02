@@ -249,14 +249,22 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	# font pango: Iosevka, Icons 11
-	font pango: Moralerspace Krypton,IIcons 9
-	position top
-	strip_workspace_numbers yes
-        
-	# bumblebee-status ----------------------------------------- disk pulseout date
-	status_command bumblebee-status \
-		-m kernel spacer nic ping spacer cpu sensors memory disk spacer date time\
-		-p time.format="%R:%S" date.format=" %m/%d (%a)" title.max=50 title.scroll=True pulseout.autostart=true pulseout.limit=100% pulseout.showbars=true nic.exclude="enp*,lo" nic.format="{intf} [{ip}]" ping.address="yamaha.com"\
-		-t iceberg-dark-powerline
+        font pango: Moralerspace Krypton,IIcons 8
+        position top
+        strip_workspace_numbers yes
+
+    # bumblebee-status -----------------------------------------
+    status_command exec env LANG=C.UTF-8 bumblebee-status \
+            -m kernel nic:wlan cpu sensors memory disk spacer playerctl pipewire spacer date time \
+            -p title.max=50 title.scroll=True \
+                nic.states="^down" \
+                wlan.format=" {intf}[{ip}] {ssid} {strength}" wlan.include="wlan0" wlan.exclude="lo,enp*,docker0,br*,veth*" \
+                tailscale.include="tailscale0" tailscale.exclude="lo,wlan0" \
+                tailscale.states="up" \
+                playerctl.format="{{ trunc(title, 10) }}/{{ trunc(artist, 5) }} {{ duration(position) }}/{{ duration(mpris:length)}}" playerctl.hide=true \
+                memory.format=" {used}/{total} ({percent:.1f}%)" \
+                disk.format=" {used}/{size} ({percent:.1f}%)" \
+                pulseout.limit=100% pulseout.showbars=true \
+                date.format=" %m/%d (%a)" time.format=" %R:%S" \
+            -t iceberg-dark-powerline
 }
