@@ -250,7 +250,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	# font pango: Iosevka, Icons 11
-	font pango: Moralerspace Krypton,IIcons 9
+	font pango: Moralerspace Krypton,IIcons 8
 	position top
 	strip_workspace_numbers yes
         
