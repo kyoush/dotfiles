@@ -99,8 +99,6 @@ GPG_TTY=$(tty)
 export GPG_TTY
 export PAGER=less
 export LESSCHARSET=utf-8
-export DOCKER_BUILDKIT=0
-export COMPOSE_DOCKER_CLI_BUILD=0
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
