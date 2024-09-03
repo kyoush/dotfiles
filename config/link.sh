@@ -4,6 +4,10 @@
 
 [[ -d /home/${USER}/.config/${1} ]] && echo -e "error: directory existed" && exit
 
-ln -s /home/${USER}/dotfiles/config/${1} /home/${USER}/.config/${1}
-echo "link created"
+if [[ ! -d /home/${USER}/.config ]]; then
+    echo "WARNING: .config dir does not exist. creating...";
+    mkdir "/home/${USER}/.config"
+fi
 
+ln -s /home/${USER}/dotfiles/config/${1} /home/${USER}/.config/${1}
+echo "Success: link created"
