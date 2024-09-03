@@ -72,10 +72,13 @@ setopt hist_ignore_all_dups
 
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias diff='diff --color=auto'
 
 GPG_TTY=$(tty)
 export GPG_TTY
 
-export LANG=en_US.UTF-8
-
 export LESSCHARSET=utf-8
+export LANG=C.UTF-8
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
