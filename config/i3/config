@@ -39,7 +39,7 @@ exec --no-startup-id picom -b
 # NOTE:
 #   Setting X11 and console keymaps is not supported in Debian (and also Ubuntu)
 #   use XKBOPTIONS="ctrl:nocaps" variable in `/etc/default/keyboard`
-exec --no-startup-id localectl --no-convert set-x11-keymap us jp105 "" ctrl:nocaps
+exec --no-startup-id localectl --no-convert set-x11-keymap us jp105 "" ctrl:nocaps 
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -242,16 +242,13 @@ bar {
 
     # bumblebee-status -----------------------------------------
     status_command exec env LANG=C.UTF-8 bumblebee-status \
-        -m kernel nic ping cpu sensors memory disk:root disk:home disk:hdd date time pulseout \
+        -m kernel nic cpu sensors memory disk:root disk:home disk:hdd spacer playerctl pipewire spacer date time \
         -p  title.max=50 title.scroll=True \
             nic.include="enp6s0,tailscale0" nic.format="{intf} [{ip}]" nic.states="^down" \
             memory.format="{used}/{total} ({percent:.1f}%)" \
             ping.address="yamaha.com" \
+            playerctl.format="{{ trunc(title, 5) }}/{{ trunc(artist, 3) }} {{ duration(position) }}/{{ duration(mpris:length)}}" playerctl.hide=true \
             disk.format="{path}: {used}/{size} ({percent:.1f}%)" root.path="/" home.path="/home/kyoshi" hdd.path="/mnt/hdd" \
             date.format="%Y/%m/%d (%a)" time.format="%R:%S"\
-            pulseout.autostart=false pulseout.limit=100% pulseout.showbars=true \
         -t iceberg-dark-powerline
 }
-
-#             eth.include="enp6s0" eth.exclude="" eth.format="{intf} [{ip}]" eth.states="^down" \ # not work
-#             tail.include="tailscale0" tail.exclude="" tail.format="{intf}: {state}" tail.states="^down"\ # not work
