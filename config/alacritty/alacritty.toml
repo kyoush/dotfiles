@@ -33,7 +33,8 @@ TERM = "xterm-256color"
 size = 8
 
 [font.bold]
-family = 'Moralerspace Argon'
+#family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
@@ -43,7 +44,8 @@ family = 'Moralerspace Argon'
 style = "Bold"
 
 [font.italic]
-family = 'Moralerspace Argon'
+#family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 # family = "HackNerdFont"
 # family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
@@ -52,7 +54,8 @@ family = 'Moralerspace Argon'
 style = "Italic"
 
 [font.normal]
-family = 'Moralerspace Argon'
+# family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 # family = 'Mononoki NerdFont'
 # family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
