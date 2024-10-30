@@ -65,6 +65,8 @@ GPG_TTY=$(tty)
 export GPG_TTY
 export PAGER=less
 export LESSCHARSET=utf-8
+export SCREENRC="~/.screenrc"
+
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
@@ -89,6 +91,16 @@ fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
 
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
