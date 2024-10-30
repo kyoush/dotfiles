@@ -65,6 +65,9 @@ export LESSCHARSET=utf-8
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
+export GITHUB_TOKEN=$(cat ~/.config/GITHUB_TOKEN)
+export GITLAB_TOKEN=$(cat ~/.config/GITLAB_TOKEN)
+
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 
