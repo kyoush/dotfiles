@@ -30,7 +30,7 @@ if [[ ! -n $TMUX ]]; then
 	tmux attach-session -t "$ID"
 fi
 
-HISTFILE=~/.zsh_history
+HISTFILE=${HOME}/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
