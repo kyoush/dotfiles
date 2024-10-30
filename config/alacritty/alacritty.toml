@@ -36,35 +36,28 @@ size = 8
 #family = 'Moralerspace Argon'
 family = 'Explex35 Console NF'
 # family = "HackNerdFont"
-# family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
-# family = 'Moralerspace Neon'
-# family = 'Moralerspace Xenon'
-# family = 'Bizin Gothic'
+# family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 style = "Bold"
 
 [font.italic]
 #family = 'Moralerspace Argon'
 family = 'Explex35 Console NF'
 # family = "HackNerdFont"
-# family = 'Monaspace Neon'
 # family = 'Monaspace Argon'
-# family = 'Moralerspace Neon'
-# family = 'Moralerspace Radon'
+# family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 style = "Italic"
 
 [font.normal]
 # family = 'Moralerspace Argon'
 family = 'Explex35 Console NF'
 # family = 'Mononoki NerdFont'
-# family = 'Monaspace Neon'
-# family = 'Monaspace Argon'
 # family = 'HackNerdFont'
-# family = 'Moralerspace Neon'
-# family = 'Moralerspace Xenon'
-# family = 'Moralerspace Radon'
-# family = 'Moralerspace Krypton'
-# family = 'Bizin Gothic'
+# family = 'Monaspace Argon'
+# family = 'Moralerspace Argon'
+family = 'Explex35 Console NF'
 style = "Regular"
 
 [window]
