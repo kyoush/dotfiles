@@ -11,6 +11,10 @@ function precmd() {
 
 export LANG=C
 
+# for docker completions
+# @see https://docs.docker.com/engine/cli/completion/#zsh
+fpath=(~/.docker/completions $fpath)
+
 autoload -Uz compinit
 compinit
 
