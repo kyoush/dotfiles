@@ -1,5 +1,8 @@
 # Created by newuser for 5.9
 
+# tmux utf-8 mode
+alias tmux='tmux -u'
+
 function precmd() {
 	if [ ! -z $TMUX ]; then
 		tmux refresh-client -S
@@ -36,9 +39,6 @@ colors
 PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$'\n'"$ "
 
 setopt hist_ignore_all_dups
-
-# tmux utf-8 mode
-alias tmux='tmux -u'
 
 # refresh timeout @see wiki.archlinux.jp/index.php/Sudo
 alias sudo='sudo -v; sudo '
