@@ -1,7 +1,47 @@
 # Created by newuser for 5.9
 
-# tmux utf-8 mode
-alias tmux='tmux -u'
+function export_variables() {
+	export LANG=C
+	export GPG_TTY
+	export PAGER=less
+	export LESSCHARSET=utf-8
+	export LC_ALL=C.UTF-8
+	export LANG=C.UTF-8
+}
+
+function export_token() {
+	tokens=( \
+		"GITHUB_TOKEN" \
+		"GITLAB_TOKEN" \
+		"GITLAB_COM_TOKEN" \
+	)
+
+	token_path="/home/${USER}/.config/"
+
+	for token in "${tokens[@]}"; do
+		if [[ -r "${token_path}${token}" ]]; then
+			export ${token}=$(cat "${token_path}${token}")
+		fi
+	done
+}
+
+function setup_alias() {
+	# tmux utf-8 mode
+	alias tmux='tmux -u'
+
+	# refresh timeout @see wiki.archlinux.jp/index.php/Sudo
+	alias sudo='sudo -v; sudo '
+
+	# @see wiki.archlinux.jp/index.php/コンソールのカラー出力
+	alias ip='ip -color=auto'
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	if [[ -x `which colordiff` ]]; then
+		alias diff='colordiff -u'
+	else
+		alias diff='diff -u'
+	fi
+}
 
 function precmd() {
 	if [ ! -z $TMUX ]; then
@@ -9,97 +49,94 @@ function precmd() {
 	fi
 }
 
-export LANG=C
-
-# for docker completions
-# @see https://docs.docker.com/engine/cli/completion/#zsh
-fpath=(~/.docker/completions $fpath)
-
-autoload -Uz compinit
-compinit
-
-autoload -Uz colors
-colors
-
-zstyle ':completion:*' menu select
-
-if [[ ! -n $TMUX ]]; then
-	# get the IDs
-	ID="`tmux list-sessions`"
-	if [[ -z "$ID" ]]; then
-		tmux new-session
+function setup_tmux() {
+	if [[ ! -n "$SSH_CONNECTION" ]]; then
+		if [[ ! -n $TMUX ]]; then
+			# get the IDs
+			ID="`tmux list-sessions`"
+			if [[ -z "$ID" ]]; then
+				tmux new-session
+			fi
+			ID="`echo $ID | $PERCOL | cut -d: -f1`"
+			tmux attach-session -t "$ID"
+		fi
 	fi
-	ID="`echo $ID | $PERCOL | cut -d: -f1`"
-	tmux attach-session -t "$ID"
-fi
+}
 
-HISTFILE=${HOME}/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
+function setup_zsh() {
+	autoload -Uz compinit
+	compinit
 
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
+	autoload -Uz colors
+	colors
 
-autoload -Uz colors
-colors
+	zstyle ':completion:*' menu select
 
-PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$'\n'"$ "
+	### Added by Zinit's installer
+	if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+		print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+		command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+		command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+			print -P "%F{33} %F{34}Installation successful.%f%b" || \
+			print -P "%F{160} The clone has failed.%f%b"
+	fi
 
-setopt hist_ignore_all_dups
+	source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+	autoload -Uz _zinit
+	(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# refresh timeout @see wiki.archlinux.jp/index.php/Sudo
-alias sudo='sudo -v; sudo '
+	zinit ice pick"async.zsh" src"pure.zsh"
+	zinit light sindresorhus/pure
 
-# @see wiki.archlinux.jp/index.php/コンソールのカラー出力
-alias ip='ip -color=auto'
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-if [[ -x `which colordiff` ]]; then
-	alias diff='colordiff -u'
-else
-	alias diff='diff -u'
-fi
+	zinit ice wait'!0'
+	#zinit light zdharma/fast-syntax-highlighting
+	zinit light zsh-users/zsh-autosuggestions
+	zinit light zsh-users/zsh-completions
 
-GPG_TTY=$(tty)
+	zinit ice as"completion"
+	zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-export GPG_TTY
-export PAGER=less
-export LESSCHARSET=utf-8
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
+	zinit ice as"completion"
+	zinit snippet https://github.com/docker/compose/blob/v1/contrib/completion/zsh/_docker-compose
+}
 
-export GITHUB_TOKEN=$(cat ~/.config/GITHUB_TOKEN)
-export GITLAB_TOKEN=$(cat ~/.config/GITLAB_TOKEN)
+function setup_docker() {
+	# for docker completions
+	# @see https://docs.docker.com/engine/cli/completion/#zsh
+	fpath=(~/.docker/completions $fpath)
+}
 
-# Load Angular CLI autocompletion.
-# source <(ng completion script)
+function setup_nodejs() {
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
-export PATH=~/miniconda3/bin:$PATH
-source ~/miniconda3/etc/profile.d/conda.sh
+function setup_miniconda() {
+	[[ -d "/home/${USER}/miniconda3/bin" ]] && export PATH=~/miniconda3/bin:$PATH
+	[[ -r "/home/${USER}/miniconda3/etc/profile.d/conda.sh" ]] && source ~/miniconda3/etc/profile.d/conda.sh
+}
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
+function main() {
+	# PROMPT="${fg[green]}${USER}@${HOST}${reset_color}: ${fg[blue]}%~${reset_color}"$'\n'"$ "
+	HISTFILE=${HOME}/.zsh_history
+	HISTSIZE=50000
+	SAVEHIST=50000
+	GPG_TTY=$(tty)
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+	setopt prompt_subst
+	setopt hist_ignore_all_dups
 
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+	export_variables
+	export_token
 
-zinit ice wait'!0'
-#zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
+	setup_alias
+	setup_zsh
+	setup_tmux
 
-zinit ice as"completion"
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+	setup_docker
+	setup_nodejs
+	setup_miniconda
+}
 
-zinit ice as"completion"
-zinit snippet https://github.com/docker/compose/blob/v1/contrib/completion/zsh/_docker-compose
+main
