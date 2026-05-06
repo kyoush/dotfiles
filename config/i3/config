@@ -16,7 +16,7 @@ set $mod Mod4
 # font pango: DejaVu Sans Mono, Icons 8
 # font pango: Hack 10
 # font pango: Source Code Pro 8
-font pango: SourceHanSans 8
+font pango: SourceHanSans 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -39,7 +39,8 @@ exec --no-startup-id picom -b
 # NOTE:
 #   Setting X11 and console keymaps is not supported in Debian (and also Ubuntu)
 #   use XKBOPTIONS="ctrl:nocaps" variable in `/etc/default/keyboard`
-exec --no-startup-id localectl --no-convert set-x11-keymap us jp105 "" ctrl:nocaps 
+# exec --no-startup-id localectl --no-convert set-x11-keymap us "" "" ctrl:nocaps 
+# ↑は毎回設定する必要がなかった。一回設定すれば永続的に設定される。
 
 # autostart libinput-gestures for laptop
 exec --no-startup-id libinput-gestures-setup autostart start
@@ -249,7 +250,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        font pango: Moralerspace Krypton,IIcons 8
+        font pango: Moralerspace Krypton,Icons 8
         position top
         strip_workspace_numbers yes
 
@@ -259,8 +260,6 @@ bar {
             -p title.max=50 title.scroll=True \
                 nic.states="^down" \
                 wlan.format=" {intf}[{ip}] {ssid} {strength}" wlan.include="wlan0" wlan.exclude="lo,enp*,docker0,br*,veth*" \
-                tailscale.include="tailscale0" tailscale.exclude="lo,wlan0" \
-                tailscale.states="up" \
                 playerctl.format="{{ trunc(title, 10) }}/{{ trunc(artist, 5) }} {{ duration(position) }}/{{ duration(mpris:length)}}" playerctl.hide=true \
                 memory.format=" {used}/{total} ({percent:.1f}%)" \
                 disk.format=" {used}/{size} ({percent:.1f}%)" \
